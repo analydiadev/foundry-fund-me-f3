@@ -10,6 +10,7 @@ contract FundMeTest is Test {
     address USER = makeAddr("user");
     uint256 constant SEND_VALUE = 0.01 ether;
     uint256 constant STARTING_BALANCE = 10 ether;
+    uint256 constant GAS_PRICE = 1;
 
     function setUp() external {
         DeployFundMe deployFundMe = new DeployFundMe();
@@ -65,6 +66,7 @@ contract FundMeTest is Test {
         uint256 startingOwnerBalance = fundMe.getOwner().balance;
         uint256 startingFundMeBalance = address(fundMe).balance;
         //act
+        vm.txGasPrice();
         vm.prank(fundMe.getOwner());
         fundMe.withdraw();
         //Assert
@@ -77,7 +79,7 @@ contract FundMeTest is Test {
         );
     }
 
-    function testeWithdrawFromMultipleFunders() public funded {
+    function testWithdrawFromMultipleFunders() public funded {
         //arrange
         uint160 numberOfFunders = 10;
         uint160 startingFunderIndex = 1;
