@@ -8,11 +8,9 @@ This repository is part of the **Cyfrin Solidity Course** and demonstrates how t
 - [Getting Started](#getting-started)
   - [Requirements](#requirements)
   - [Quickstart](#quickstart)
-  - [Optional Gitpod](#optional-gitpod)
 - [Usage](#usage)
   - [Deploy](#deploy)
   - [Testing](#testing)
-  - [Test Coverage](#test-coverage)
   - [Local zkSync](#local-zksync)
 - [Deployment](#deployment)
   - [To Local zkSync Node](#to-local-zksync-node)
@@ -68,7 +66,10 @@ To get started with this project, you need to have the following tools and depen
 
 ## Usage
 
+### Deploy
+
 Deploying the Contract
+
 To deploy the FundMe contract, run the following command:
 
 `forge script script/DeployFundMe.s.sol`
@@ -108,7 +109,8 @@ To set up a local zkSync node for development, follow the instructions in the se
 
 ### Deployment
 
-To Local zkSync Node
+### To Local zkSync Node
+
 Install Local zkSync Node: Follow these steps to set up a local zkSync node:
 
 `npx zksync-cli dev config`
@@ -122,7 +124,7 @@ Deploy to zkSync: Once the local zkSync node is running, deploy the contract wit
 
 `make deploy-zk`
 
-### To Testnet or Mainnet
+### To Testnet/Mainnet
 
 Setup Environment Variables:
 You will need to set up the following environment variables:
@@ -155,14 +157,16 @@ To withdraw funds from the deployed contract, use the following command:
 
 This will generate a .gas-snapshot file with the estimated gas costs.
 
-Formatting
+### Formatting
+
 To format your code:
 
 `forge fmt`
 
 ## Additional Info
 
-What "Official" Means
+### What "Official" Means
+
 Some users were having confusion regarding whether Chainlink-brownie-contracts is an official Chainlink repository. It is an official repository maintained by the Chainlink team for the purpose of supporting Chainlink oracles. It follows the official Chainlink release process and packages it in a way that’s compatible with Foundry.
 
 For more information, see:
