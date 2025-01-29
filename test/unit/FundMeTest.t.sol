@@ -2,13 +2,13 @@
 
 pragma solidity ^0.8.21;
 import {Test} from "lib/forge-std/src/Test.sol";
-import {FundMe} from "../src/FundMe.sol";
-import {DeployFundMe} from "../script/DeployFundMe.s.sol";
+import {FundMe} from "../../src/FundMe.sol";
+import {DeployFundMe} from "../../script/DeployFundMe.s.sol";
 
 contract FundMeTest is Test {
     FundMe fundMe;
     address USER = makeAddr("user");
-    uint256 constant SEND_VALUE = 0.01 ether;
+    uint256 constant SEND_VALUE = 0.1 ether;
     uint256 constant STARTING_BALANCE = 10 ether;
     uint256 constant GAS_PRICE = 1;
 
@@ -39,8 +39,9 @@ contract FundMeTest is Test {
         uint256 amountFunded = fundMe.getAddressToAmountFunded(USER);
         assertEq(amountFunded, SEND_VALUE);
     }
-    function testAddFunderToArrayOffFunders() public {
+    function testAddFunderToArrayOfFunders() public {
         vm.prank(USER);
+        vm.deal(USER, 1e18);
         fundMe.fund{value: SEND_VALUE}();
         address funder = fundMe.getFunder(0);
         assertEq(funder, USER);
@@ -66,7 +67,7 @@ contract FundMeTest is Test {
         uint256 startingOwnerBalance = fundMe.getOwner().balance;
         uint256 startingFundMeBalance = address(fundMe).balance;
         //act
-        vm.txGasPrice();
+        //vm.txGasPrice();
         vm.prank(fundMe.getOwner());
         fundMe.withdraw();
         //Assert
