@@ -72,7 +72,7 @@ Deploying the Contract
 
 To deploy the FundMe contract, run the following command:
 
-`forge script script/DeployFundMe.s.sol`
+`forge script script/DeployFundMe.s.sol:DeployFundMe`
 
 This will deploy the contract using the script located in script/DeployFundMe.s.sol.
 
